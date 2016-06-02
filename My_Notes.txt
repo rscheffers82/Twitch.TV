@@ -1,0 +1,27 @@
+=== users stories ===
+- Display when a channel is streaming
+- Click a channel and visit their Twitch channel
+- See details about what their are streaming
+- Indicator for accounts that never existed or have closed their channel
+
+
+to-do:
+* error handling in the code, users don't exist
+* create UI
+* 
+
+=== [ notes ] ===
+
+info channels use
+https://api.twitch.tv/kraken/channels/"channel"
+
+vars needed
+stream.channel
+	.display_name
+	.logo
+	.url
+
+// are they streaming //
+https://api.twitch.tv/kraken/streams/"channel"
+
+var users = ["brunofin", "comster404", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
