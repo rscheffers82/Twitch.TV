@@ -1,39 +1,81 @@
 /* Stylesheet for Twitch TV App */
 
-html,
+html {
+  position: relative;
+  min-height: 100%;
+
+}
 body {
-	height: 100%;
+  /* Margin bottom by footer height */
+  margin-bottom: 35px;
+  background-color: #cccccc;
 }
 
-#wrap{
-	min-height: 100%
-}
-
-#main{
-	/*overflow: auto;*/
-	margin-bottom: -30px;
-}
-
-#footer{
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	background-color: #123456;
 	color: #aaaaaa;
 	margin: 0 auto;
-	margin-top: -30px; /* negative value of footer height if at the bottom */
 	padding: 5px 20px 5px 20px;
-	height: 30px;
+	height: 35px;
 	text-align: center;
 	clear:both;
 }
 
-#footer a{
+footer a{
   color: #ffffff;
   padding: 2px 10px 2px 10px;
   border-radius: 20px;
 }
 
-#footer a:hover{
+footer a:hover{
   background-color: #113456;
   color: #000000;
   padding: 2px 10px 2px 10px;
   text-decoration: inherit;
+}
+
+.ico{
+    height: 60px;
+    width: 60px;
+    padding: 2px;
+    border: 1px solid #aaaaaa;
+    border-radius: 50%;
+    display: inline;
+}
+
+tr{
+	border: 1px solid #aaaaaa;
+	background-color: #fcfcfc;
+}
+tr:hover{
+	background-color: #dddddd !important;
+}
+
+.border {
+	border: 2px solid #aaaaaa;
+}
+
+td{
+    vertical-align: middle !important;
+    text-align: left;
+    border: 2px solid #aaaaaa;
+}
+td.center{
+	text-align: center;
+}
+
+/* remove standard table borders*/
+.table {
+    border-bottom: 0px !important;
+    border-collapse:separate;
+    border-spacing:0 5px;
+}
+.table th, .table td {
+    border: 1px !important;
+}
+.fixed-table-container {
+    border:0px !important;
 }

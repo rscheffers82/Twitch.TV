@@ -45,6 +45,14 @@ for ( var select in data ){
 // info on users
 
 // image, name, status / or stream content
+	
+
+/* NOTES:
+move li with a stream to the top
+http://jsfiddle.net/NyxnJ/
+*/
+
+/*
 
 for ( i = 0; i < twData.length; i++){
 	console.log("loading channel: " + twData[i].channel);
@@ -52,10 +60,10 @@ for ( i = 0; i < twData.length; i++){
   	//console.log("loading channel: " + twData[i].channel);
 	})
 	.done(function(data, textStatus, jqXHR){
-		/*.display_name
-		.logo
-		.url*/
-		console.log(data);
+		//.display_name
+		//.logo
+		//.url
+		//console.log(data);
 		//getStream(twData[i].channel);
 	})
 	.fail(function(jqXHR, textStatus, errorThrown){
@@ -71,8 +79,6 @@ function getStream(channel){
 	});
 }
 
-
-/* NOTES:
-move li with a stream to the top
-http://jsfiddle.net/NyxnJ/
 */
+
+$('#results').prepend( $('#freecodecamp') );
