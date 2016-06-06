@@ -6,9 +6,10 @@
 
 
 to-do:
-* error handling in the code, users don't exist
-* create UI
-* 
+- error handling in the code, users don't exist
+- create UI
+- cross browser testing
+v add sticky footer 
 
 === [ notes ] ===
 
