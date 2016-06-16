@@ -12,30 +12,41 @@ html {
 }
 body {
   /* Margin bottom by footer height */
+  margin-top: 10px;
   margin-bottom: 35px;
   font-family: "Lora", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  font-size: 13px;
+  color: #DADADA;
   background-color: transparent;
+}
+a {
+  color: inherit;
+}
+a:hover {
+  color: inherit;
 }
 
 .twitch {
   font-family: Arimo;
   font-size: 40px;
-  padding: 5px 0px 5px 20px;
+  padding: 5px 0px 5px 35px;
+  border: 1px 1px 0px 1px;
   color: #111111;
-  background-color: #333333;
+  background-color: #88394B
 }
 .twitch-bottom{
-  background-color: #333333;
+  background-color: #88394B;
   height: 10px;
-  margin-top:-20px;
+  margin:-20px 0px 20px 0px;
 }
 
 .offline {
-  background-color: #aaaaaa;
+  background-color: #9E9E9E; /*#071520;*/
+  color: #111111;
 }
 
 .online {
-  background-color: #fafafc;
+  background-color: #15607B;
 }
 
 footer{
@@ -74,11 +85,7 @@ footer a:hover{
 }
 
 tr{
-	border: 1px solid #aaaaaa;
   padding: 5px !important;
-}
-tr:hover{
-	background-color: #dddddd !important;
 }
 
 .border {

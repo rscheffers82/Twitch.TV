@@ -17,8 +17,8 @@ error - account invalid
 // First two are deleted / banned users
 
 //brunofin
-//var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
-var channels = ["nalcs1", "OgamingSC2", "storbeck"];
+var channels = ["blackbeltproofreader", "nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
+//var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx"];
 
 var url = "https://api.twitch.tv/kraken/";
 
@@ -48,19 +48,6 @@ var getResults = function (twData) {
           //console.log(data);
           display(info);
           getResults(twData);
-          // status, steaming or not
-          /*
-          //console.log(data.stream.channel.status);
-          Do not USE!!!var channel = '.' + data._links.channel.split('/')[5].toLowerCase();
-          if (data.stream !== null){
-            //data.stream.channel.status
-            // stream, add online class
-            $('tr' + channel).addClass('online');
-          } else{
-            // no stream, add offline class, status set to Offline
-            $( 'tr' + channel).addClass('offline');
-            $( 'td'+ channel ).text('offline');
-          }*/
         });
   })
   .fail(function(jqXHR, textStatus, errorThrown) {
