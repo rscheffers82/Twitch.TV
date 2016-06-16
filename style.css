@@ -11,6 +11,14 @@ body {
   background-color: #cccccc;
 }
 
+.offline {
+  background-color: #aaaaaa;
+}
+
+.online {
+  background-color: #fafafc;
+}
+
 footer{
 	position: absolute;
 	bottom: 0;

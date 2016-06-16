@@ -13,64 +13,60 @@ https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-s
 // First two are deleted / banned users
 
 //brunofin
-var twData = ["royscheffers", "comster404", "ESL_SC2", "OgamingSC2"]; //, "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
-/*var twData = [//{
-            //"channel": "brunofin"
-            //},
-            {
-            "channel": "freecodecamp"  
-            }
-            
-            ];
-*/
+var twData = ["freecodecamp", "RobotCaleb", "comster404", "cretetion", "ESL_SC2", "OgamingSC2", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
 var url = "https://api.twitch.tv/kraken/";
 
 for ( var select in twData ){
   // console.log(data[select]);
   $.getJSON(url + "channels/" + twData[select])
-    .done(function(data, textStatus, jqXHR) {
-      var info = [];
-      info.logo = data.logo
-      info.name = data.display_name;
-      info.status = data.status;
-      info.url = data.url;
-      info.online = true;
-      //console.log(data);
-      display(info);
-
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      // account closed or not found error handling
-      console.log('failed to find the name' + errorThrown.toString());
-      console.log(jqXHR);
-        var info = [];
-        info.logo = 'images/no-channel.jpg';
-        info.name = jqXHR.responseJSON.message.split('\'')[1];
-        info.status = 'Account Closed';
-        info.url = '#';
-        info.online = false;
-        //console.log("fail: " + textStatus);
-        //console.log(errorThrown.toString());
-        //console.log(jqXHR.responseJSON.message);
-        display(info);      
-    })
-    /* not needed
-    $.getJSON(url + "streams/" + twData[select].channel, function(data){
-     console.log(data);
-      console.log(data.stream.channel.status);
-    });
-    */
+  .done(function(data, textStatus, jqXHR) {
+    var info = [];
+    info.logo = data.logo
+    info.name = data.display_name;
+    info.status = data.status;
+    info.url = data.url;
+    //console.log(data);
+    display(info);
+  })
+  .fail(function(jqXHR, textStatus, errorThrown) {
+    // account closed or not found error handling
+    //console.log('failed to find the name' + errorThrown.toString());
+    //console.log(jqXHR);
+    var info = [];
+    info.logo = 'images/no-channel.jpg';
+    info.name = jqXHR.responseJSON.message.split('\'')[1];
+    info.status = 'Account Closed';
+    info.url = '#';
+    //console.log("fail: " + textStatus);
+    //console.log(errorThrown.toString());
+    //console.log(jqXHR.responseJSON.message);
+    display(info);      
+  })
+  // get details about the steamers and if they currently steam
+  $.getJSON(url + "streams/" + twData[select])
+  .done(function(data){
+    console.log(data);
+    //console.log(data.stream.channel.status);
+    var channel = '.' + data._links.channel.split('/')[5].toLowerCase();
+    if (data.stream !== null){
+      //data.stream.channel.status
+      // stream, add online class
+      $('tr' + channel).addClass('online');
+    } else{
+      // no stream, add offline class, status set to Offline
+      $( 'tr' + channel).addClass('offline');
+      $( 'td'+ channel ).text('offline');
+    }
+  });
 }
 
 function display(info){
   console.log(info);
-  var html = '';
-  html += '<tr class="' + info.online + '"><td style="width:50px;">' +
+  var html = '<tr class="' + info.name.toLowerCase() + '"><td style="width:50px;">' +
   '<img class="ico" src="' + info.logo + '"></td>' +
   '<td style="width:50px;"><a href="' + info.url + '" target="_blank">' + info.name + '</td>' +
-  '<td class="center">' + info.status + '</td></tr>';
-  if ( info.online ) $('#results').prepend( html );
-  else $('#results').append( html );
+  '<td class="center ' + info.name.toLowerCase() + '">' + info.status + '</td></tr>';
+  $('#results').append( html );
 }
 
 
