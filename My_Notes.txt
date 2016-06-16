@@ -9,9 +9,11 @@ to-do:
 v add sticky footer 
 v create UI (explored, media, li-item from bootstrap and table. Table it is)
 v error handling in the code, users don't exist
-- write dynamic load of the content
-- cross browser testing
-- online, offline, all option?
+v write dynamic load of the content
+v cross browser testing
+x online, offline, all option?
+
+Known issue: performance could be better, eg. use timer
 
 === [ notes ] ===
 
