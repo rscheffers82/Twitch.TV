@@ -12,9 +12,9 @@ https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-s
 */
 // First two are deleted / banned users
 
-
-var channel = ["brunofin", "comster404", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
-var twData = [//{
+//brunofin
+var twData = ["royscheffers", "comster404", "ESL_SC2", "OgamingSC2"]; //, "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
+/*var twData = [//{
             //"channel": "brunofin"
             //},
             {
@@ -22,42 +22,37 @@ var twData = [//{
             }
             
             ];
-
+*/
 var url = "https://api.twitch.tv/kraken/";
-
-$(.add).append('<table id="results" class="table table-hover">');
 
 for ( var select in twData ){
   // console.log(data[select]);
-  $.getJSON(url + "channels/" + twData[select].channel)
+  $.getJSON(url + "channels/" + twData[select])
     .done(function(data, textStatus, jqXHR) {
       var info = [];
       info.logo = data.logo
       info.name = data.display_name;
       info.status = data.status;
       info.url = data.url;
-      info.online = 'online';
+      info.online = true;
       //console.log(data);
       display(info);
 
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
       // account closed or not found error handling
-      if ( jqXHR.status === 404 ) {
+      console.log('failed to find the name' + errorThrown.toString());
+      console.log(jqXHR);
         var info = [];
         info.logo = 'images/no-channel.jpg';
         info.name = jqXHR.responseJSON.message.split('\'')[1];
-        info.status = 'Account not found';
+        info.status = 'Account Closed';
         info.url = '#';
-        info.online = 'offline';
+        info.online = false;
         //console.log("fail: " + textStatus);
         //console.log(errorThrown.toString());
-        console.log(jqXHR.responseJSON.message);
-        display(info);
-      }
-      // display different errors when they are triggered
-      else console.log('different than 404: ' + errorThrown.toString());
+        //console.log(jqXHR.responseJSON.message);
+        display(info);      
     })
     /* not needed
     $.getJSON(url + "streams/" + twData[select].channel, function(data){
@@ -67,8 +62,6 @@ for ( var select in twData ){
     */
 }
 
-$(.add).append('</table>');
-
 function display(info){
   console.log(info);
   var html = '';
@@ -76,9 +69,10 @@ function display(info){
   '<img class="ico" src="' + info.logo + '"></td>' +
   '<td style="width:50px;"><a href="' + info.url + '" target="_blank">' + info.name + '</td>' +
   '<td class="center">' + info.status + '</td></tr>';
+  if ( info.online ) $('#results').prepend( html );
+  else $('#results').append( html );
 }
 
-$('#results').prepend( $('.online') );
 
 // info on users
 
