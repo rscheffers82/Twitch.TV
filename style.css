@@ -1,14 +1,33 @@
 /* Stylesheet for Twitch TV App */
 
 html {
-  position: relative;
+  position: absolute;
   min-height: 100%;
-
+  min-width: 100%;
+  background: url(images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body {
   /* Margin bottom by footer height */
   margin-bottom: 35px;
-  background-color: #cccccc;
+  font-family: "Lora", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  background-color: transparent;
+}
+
+.twitch {
+  font-family: Arimo;
+  font-size: 40px;
+  padding: 5px 0px 5px 20px;
+  color: #111111;
+  background-color: #333333;
+}
+.twitch-bottom{
+  background-color: #333333;
+  height: 10px;
+  margin-top:-20px;
 }
 
 .offline {
@@ -46,8 +65,8 @@ footer a:hover{
 }
 
 .ico{
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     padding: 2px;
     border: 1px solid #aaaaaa;
     border-radius: 50%;
@@ -56,7 +75,7 @@ footer a:hover{
 
 tr{
 	border: 1px solid #aaaaaa;
-	background-color: #fafafc;
+  padding: 5px !important;
 }
 tr:hover{
 	background-color: #dddddd !important;
@@ -70,6 +89,7 @@ td{
     vertical-align: middle !important;
     text-align: left;
     border: 2px solid #aaaaaa;
+    height: 30px;
 }
 td.center{
 	text-align: center;
@@ -87,3 +107,6 @@ td.center{
 .fixed-table-container {
     border:0px !important;
 }
+.btn-group-vertical > .container {
+  clear: none !important;
+};

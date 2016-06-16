@@ -17,7 +17,9 @@ error - account invalid
 // First two are deleted / banned users
 
 //brunofin
-var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
+//var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
+var channels = ["nalcs1", "OgamingSC2", "storbeck"];
+
 var url = "https://api.twitch.tv/kraken/";
 
 var getResults = function (twData) {
