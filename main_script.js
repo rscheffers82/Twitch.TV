@@ -3,32 +3,29 @@ $( document ).ready(function() {
   getResults (channels);
 });
 
+
 /*
 Usage details see the below link: 
 https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-streamschannel
 */
-
-
-//
 var channels = ["blackbeltproofreader", "brunofin", "nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
-//var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx"];
-
 var url = "https://api.twitch.tv/kraken/";
+stuff = [];
 
 var getResults = function (twData) {
+  // check if the array is still containing elements
   if ( twData.length < 1 ) return;
-  
+  // take the first element of the array 
   var currentChannel = twData.shift();
-  // console.log(data[select]);
-  $.getJSON(url + "channels/" + currentChannel)
+  // API call to get the twitch channel info
+  $.getJSON(url + "channels/" + encodeURI(currentChannel))
     .done(function(data, textStatus, jqXHR) {
       var info = {};
       info.logo = data.logo
       info.name = data.display_name;
       info.url = data.url;
-      //console.log(data);
-      
-      $.getJSON(url + "streams/" + currentChannel)
+      // 2nd API call to check if the channel is streaming content
+      $.getJSON(url + "streams/" + encodeURI(currentChannel))
         .done(function(data){
           if ( data.stream !== null ){
               info.online = true;
@@ -37,8 +34,7 @@ var getResults = function (twData) {
             info.online = false;
             info.status = 'Offline';
           }
-          //console.log(info.name);
-          //console.log(data);
+          // once data is gathered, display them and invoke getResults again for the next channel
           display(info);
           getResults(twData);
         });
@@ -53,14 +49,14 @@ var getResults = function (twData) {
     info.status = 'Account Closed';
     info.url = '#';
     info.online = false;
+    // once failure data is gathered, display them and invoke getResults again for the next channel
     display(info);
     getResults(twData);
   })
-  // get details about the steamers and if they currently steam
 }
 
-function display(info){
-  console.log(info);
+var display = function(info){
+  // format the data in a html table
   var html = '';
   if (info.online) {
     html += '<tr class="' + info.name.toLowerCase() + ' online">';

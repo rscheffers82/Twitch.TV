@@ -28,5 +28,3 @@ stream.channel
 
 // are they streaming //
 https://api.twitch.tv/kraken/streams/"channel"
-
-var users = ["brunofin", "comster404", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
