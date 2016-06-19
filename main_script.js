@@ -2,22 +2,15 @@
 $( document ).ready(function() {
   getResults (channels);
 });
-// example: https://codepen.io/FreeCodeCamp/full/Myvqmo/
-// usage
-// https://api.twitch.tv/kraken/streams?channel=freecodecamp,ESL_SC2
+
 /*
-use the below array with the above api call, further details on this link: 
+Usage details see the below link: 
 https://github.com/justintv/Twitch-API/blob/master/v3_resources/streams.md#get-streamschannel
-
-online, what are they streaming
-offline - offline
-error - account invalid
-
 */
-// First two are deleted / banned users
 
-//brunofin
-var channels = ["blackbeltproofreader", "nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
+
+//
+var channels = ["blackbeltproofreader", "brunofin", "nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx", "RobotCaleb", "noobs2ninjas", "dawah200", "esportsarena", "summit1g", "nl_kripp"];
 //var channels = ["nalcs1", "OgamingSC2", "storbeck", "comster404", "cretetion", "ESL_SC2", "habathcx"];
 
 var url = "https://api.twitch.tv/kraken/";
@@ -60,9 +53,6 @@ var getResults = function (twData) {
     info.status = 'Account Closed';
     info.url = '#';
     info.online = false;
-    //console.log("fail: " + textStatus);
-    //console.log(errorThrown.toString());
-    //console.log(jqXHR.responseJSON.message);
     display(info);
     getResults(twData);
   })
@@ -84,44 +74,3 @@ function display(info){
   if (info.online) $('#results').prepend( html );
   else $('#results').append( html );
 }
-
-
-// info on users
-
-// image, name, status / or stream content
-	
-
-/* NOTES:
-move li with a stream to the top
-http://jsfiddle.net/NyxnJ/
-*/
-
-/*
-
-for ( i = 0; i < twData.length; i++){
-	console.log("loading channel: " + twData[i].channel);
-	$.getJSON('https://api.twitch.tv/kraken/channels/' + twData[i].channel, function(data, twData){
-  	//console.log("loading channel: " + twData[i].channel);
-	})
-	.done(function(data, textStatus, jqXHR){
-		//.display_name
-		//.logo
-		//.url
-		//console.log(data);
-		//getStream(twData[i].channel);
-	})
-	.fail(function(jqXHR, textStatus, errorThrown){
-		console.log('failed');
-	})
-}
-
-// info if they currently stream 
-function getStream(channel){
-	$.getJSON('https://api.twitch.tv/kraken/streams/' + channel, function(data){
-  		console.log("are they streaming - streams");
-  		console.log(data);
-	});
-}
-
-*/
-
