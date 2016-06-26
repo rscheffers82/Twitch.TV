@@ -32,22 +32,40 @@ a:hover {
   font-size: 40px;
   padding: 5px 0px 5px 35px;
   border: 1px 1px 0px 1px;
+  border-radius: 15px 15px 0 0;
   color: #111111;
   background-color: #88394B;
+  background-image:
+    linear-gradient(
+      #010101, #88394b 5px, #88394b 63px, #010101
+    );
 }
 .twitch-bottom{
   background-color: #88394B;
+    background-image:
+    linear-gradient(
+      #010101, #88394B 3px , #88394B 7px, #010101
+    );
   height: 10px;
-  margin:-20px 0px 20px 0px;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: 20px;
 }
 
 .offline {
   background-color: #9E9E9E;
+  background-image: 
+  linear-gradient(
+      #fafafc, #9E9E9E 2px
+    );
   color: #111111;
 }
 
 .online {
   background-color: #15607B;
+  background-image: 
+    linear-gradient(
+        #fafafc, #15607B 2px
+      );
 }
 
 footer{
@@ -60,7 +78,7 @@ footer{
 	padding: 5px 20px 5px 20px;
 	height: 35px;
 	text-align: center;
-	clear:both;
+	clear: both;
 }
 
 footer a{
@@ -85,33 +103,25 @@ footer a:hover{
     display: inline;
 }
 
-tr{
-  padding: 5px !important;
+ /* Style for displaying the results
+  */
+.table { 
+  display:table; 
+  border-collapse: separate; 
+  margin:5px auto; 
 }
+.channel { 
+  display:table-row;
+} 
 
-.border {
-	border: 2px solid #aaaaaa;
-}
+.channel>div { 
+  display:table-cell;
+  background-clip: padding-box;
+  padding: 0.3em 1em;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+} 
 
-td{
-    vertical-align: middle !important;
-    text-align: left;
-    border: 2px solid #aaaaaa;
-    height: 30px;
-}
-td.center{
-	text-align: center;
-}
-
-/* remove standard table borders*/
-.table {
-    border-bottom: 0px !important;
-    border-collapse:separate;
-    border-spacing:0 5px;
-}
-.table th, .table td {
-    border: 1px !important;
-}
-.fixed-table-container {
-    border:0px !important;
-}
+.logo { width:50px; text-align:center; }
+.name { white-space:nowrap; width: 100px; max-width: 100px; }
+.status { text-align:center; }
